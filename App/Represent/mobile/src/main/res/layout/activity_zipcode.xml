@@ -1,0 +1,180 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.kylehotchkiss.represent.ZipcodeActivity"
+    android:theme="@style/NoActionBar">
+
+    <!-- Login progress -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView11"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView22"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView33"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView44"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView55"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="240dp"
+            android:layout_height="2dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/line2"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Represent!"
+            android:textStyle="italic"
+            android:textColor="@android:color/white"
+            android:textSize="48dp"
+            android:id="@+id/textView6"
+            android:layout_gravity="center_horizontal" />
+
+        <View
+            android:layout_width="240dp"
+            android:layout_height="2dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/line"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:drawableStart="@drawable/ic_star_grey_100_48dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/zipcode"
+                android:hint="@string/prompt_zipcode"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                />
+
+            <Button
+                android:id="@+id/set_zip"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/action_go"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textSize="20dp"
+                android:text="or"
+                android:textColor="@android:color/white"
+                android:id="@+id/textView7"
+                android:layout_gravity="center_horizontal"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Use \nCurrent Location"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:id="@+id/use_location"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:id="@+id/detailed_view"
+    tools:context="com.example.kylehotchkiss.represent.DetailedActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:src="@drawable/lee2"
+                android:scaleType="centerCrop"
+                android:contentDescription="photo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textSize="18dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Term ends 01/03/2017"
+                android:id="@+id/term_end"
+                android:textColor="@android:color/white"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_alignStart="@+id/imageView"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textSize="18dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Democrat"
+                android:id="@+id/party"
+                android:textColor="@android:color/white"
+                android:layout_above="@+id/term_end"
+                android:layout_alignStart="@+id/imageView"
+                android:layout_marginBottom="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textSize="24dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Barbara Lee"
+                android:id="@+id/name"
+                android:textColor="@android:color/white"
+                android:layout_above="@+id/party"
+                android:layout_alignStart="@+id/imageView"
+                android:layout_marginBottom="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Current Committees"
+                android:id="@+id/committee_title"
+                android:layout_marginStart="16dp"
+                android:layout_margin="16dp"
+                android:textSize="26dp"
+                android:layout_below="@+id/imageView"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/committee_list"
+                android:layout_below="@+id/committee_title"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Recently Sponsored Bills"
+                android:id="@+id/bills_title"
+                android:layout_marginStart="16dp"
+                android:layout_margin="16dp"
+                android:textSize="26dp"
+                android:layout_below="@+id/committee_list"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bills_list"
+                android:layout_below="@+id/bills_title"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

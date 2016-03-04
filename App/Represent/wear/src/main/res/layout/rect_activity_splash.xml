@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kylehotchkiss.represent.SplashActivity"
+    tools:deviceIds="wear_round"
+    android:layout_marginTop="20dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView11"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView22"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView33"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView44"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView55"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="125dp"
+            android:layout_height="2dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/line2"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Represent!"
+            android:textStyle="italic"
+            android:textColor="@android:color/white"
+            android:textSize="24dp"
+            android:id="@+id/textView6"
+            android:layout_gravity="center_horizontal" />
+
+        <View
+            android:layout_width="125dp"
+            android:layout_height="2dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/line"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:drawableStart="@drawable/ic_star_grey_100_18dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

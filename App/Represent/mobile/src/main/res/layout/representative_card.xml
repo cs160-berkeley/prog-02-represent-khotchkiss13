@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cv"
+    card_view:cardCornerRadius="4dp"
+    android:elevation="2dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="8dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/representative_photo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="photo"
+            android:adjustViewBounds="true"
+            android:src="@drawable/lee"
+            android:scaleType="fitCenter"
+            android:layout_marginRight="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/representative_name"
+            android:layout_toEndOf="@+id/representative_photo"
+            android:layout_alignParentTop="true"
+            android:textSize="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Barbara Lee"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/representative_party"
+            android:layout_toEndOf="@+id/representative_photo"
+            android:layout_below="@+id/representative_name"
+            android:textSize="14dp"
+            android:text="Democrat"
+            android:textColor="@color/light_black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/representative_email"
+            android:layout_toEndOf="@+id/representative_photo"
+            android:layout_below="@+id/representative_party"
+            android:text="Email"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="5dp"
+            android:textSize="16dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:autoLink="email"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/representative_website"
+            android:layout_toEndOf="@+id/representative_photo"
+            android:layout_below="@+id/representative_email"
+            android:drawableLeft="@drawable/ic_link_black_24dp"
+            android:drawablePadding="5dp"
+            android:textSize="16dp"
+            android:layout_gravity="center_vertical"
+            android:text="Website"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:id="@+id/representative_tweet"
+            android:layout_below="@+id/representative_photo"
+            android:text="Latest Tweet: I Like Turtles!"
+            android:textColor="@color/black"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            android:layout_below="@id/representative_tweet"
+            android:id="@+id/line"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More Info"
+            android:id="@+id/button"
+            android:layout_margin="8dp"
+            android:layout_below="@+id/line"
+            android:textColor="@color/colorAccent"
+            android:background="@android:color/transparent"
+            android:layout_alignParentRight="true"
+            android:elevation="0dp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
