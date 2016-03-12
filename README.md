@@ -10,7 +10,7 @@ Kyle Hotchkiss ([khotchkiss13@berkeley.edu](mailto:khotchkiss13@berkeley.edu))
 
 ## Demo Video
 
-Here is the link to my youtube video (https://youtu.be/bXoQpk4M1oY)
+Here is the link to my youtube video demonstrating the full functionality of the app (https://youtu.be/9ew92Z9to6U)
 
 ## Screenshots
 Here is the phone view when you first open the app. Users have the ability to input a zip code, or
