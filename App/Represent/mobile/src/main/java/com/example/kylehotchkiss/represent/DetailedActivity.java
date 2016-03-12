@@ -22,6 +22,7 @@ import java.util.List;
 
 public class DetailedActivity extends AppCompatActivity {
     Representative rep;
+    private GetRepData data;
     TextView name;
     TextView party;
     TextView end_date;
@@ -31,7 +32,8 @@ public class DetailedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        rep = (Representative) getIntent().getSerializableExtra("representative");
+        data = ((MyApplication) this.getApplication()).getReps();
+        rep = data.getRep((String) getIntent().getSerializableExtra("representative"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -42,16 +44,17 @@ public class DetailedActivity extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.imageView);
         committees = (LinearLayout) findViewById(R.id.committee_list);
         bills = (LinearLayout) findViewById(R.id.bills_list);
-        image.setImageResource(rep.photoId2);
+        image.setImageDrawable(rep.image);
         name.setText(rep.name);
         party.setText(rep.party);
         end_date.setText("Term ends on " + rep.end_date);
         ListAdapter committeesAdapter = new ArrayAdapter<String>(this, R.layout.committee_row, rep.commitees);
         ArrayList<HashMap<String, String>> billsList = new ArrayList<HashMap<String, String>>();
-        for (int i = 0; i < rep.bills.length; i++) {
+        for (int i = 0; i < rep.bills.size(); i++) {
             HashMap<String, String> map = new HashMap<String, String>();
-            map.put("name", rep.bills[i].name);
-            map.put("date_introduced", "Introduced on " + rep.bills[i].date_introduced);
+            Bill bill = rep.bills.get(i);
+            map.put("name", bill.name);
+            map.put("date_introduced", "Introduced on " + bill.date_introduced);
             billsList.add(map);
         }
         ListAdapter billsAdapter = new BillAdapter(this, billsList);

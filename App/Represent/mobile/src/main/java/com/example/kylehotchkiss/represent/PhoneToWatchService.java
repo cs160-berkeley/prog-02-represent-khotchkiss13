@@ -7,9 +7,15 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.Asset;
+import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
+import com.google.android.gms.wearable.PutDataMapRequest;
+import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 
 import java.io.ByteArrayInputStream;
@@ -57,6 +63,20 @@ public class PhoneToWatchService extends Service {
         Log.d("T", "About to send Message");
         GetRepData data = ((MyApplication) this.getApplication()).getReps();
         final ArrayList<WatchRepresentative> reps = data.watchRepresentatives;
+        final ArrayList<Asset> repImages = data.repImages;
+        for (int i = 0; i < repImages.size(); i++) {
+            Log.d("T", "onStartCommand: Sending image");
+            Asset asset = repImages.get(i);
+            PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
+            dataMap.getDataMap().putAsset("profileImage", asset);
+            PutDataRequest request = dataMap.asPutDataRequest();
+            PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi.putDataItem(mApiClient, request);
+            pendingResult.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+                @Override
+                public void onResult(DataApi.DataItemResult dataItemResult) {
+                }
+            });
+        }
         Log.d("T", "About to send Message");
         new Thread(new Runnable() {
             @Override
@@ -66,7 +86,6 @@ public class PhoneToWatchService extends Service {
                 sendMessage("/REPS", reps);
             }
         }).start();
-
         return START_STICKY;
     }
 

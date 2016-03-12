@@ -16,6 +16,7 @@ import android.support.wearable.view.CardFragment;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,22 +38,26 @@ public class MainActivity extends WearableActivity {
 
     private repWatchData data;
     private static ArrayList<WatchRepresentative> reps;
+    private static ArrayList<Drawable> images;
     private SensorManager mSensorManager;
     private ShakeDetector mSensorListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("T", "Starting new activity!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         data = ((MyWearApplication) this.getApplication()).getRepData();
         reps = data.representatives;
+        images = ((MyWearApplication) this.getApplication()).getRepImages();
+        assert(reps.size() == images.size());
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
         pager.setAdapter(new RepPagerAdapter(this, getFragmentManager()));
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorListener = new ShakeDetector();
 
         mSensorListener.setOnShakeListener(new ShakeDetector.OnShakeListener() {
-            public void onShake(){
+            public void onShake() {
                 Toast.makeText(getBaseContext(), "Lets shake things up!", Toast.LENGTH_SHORT).show();
                 sendToPhone("shake", getBaseContext());
             }
@@ -81,11 +86,8 @@ public class MainActivity extends WearableActivity {
         public RepPagerAdapter(Context ctx, FragmentManager fm) {
             super(fm);
             mContext = ctx;
-            PAGES = new Page[3][3];
+            PAGES = new Page[reps.size()][3];
         }
-
-        int[] BG_IMAGES = new int[] { R.drawable.lee2, R.drawable.boxer2, R.drawable.feinstein2 };
-
 
         private class Page {
             // static resources
@@ -101,7 +103,7 @@ public class MainActivity extends WearableActivity {
 
         @Override
         public int getColumnCount(int rowNum) {
-            return rowNum == 0 ? PAGES[rowNum].length : 2;
+            return reps.get(rowNum).isRep == true ? PAGES[rowNum].length : PAGES[rowNum].length - 1;
         }
 
         @Override
@@ -110,11 +112,6 @@ public class MainActivity extends WearableActivity {
             if (col == 0){
                 String title = reps.get(row).name;
                 String text = reps.get(row).party;
-                if (title.equals("Barbara Lee")) {
-                    BG_IMAGES[0] = R.drawable.lee2;
-                } else if (title.equals("Jeff Denham")) {
-                    BG_IMAGES[0] = R.drawable.denham2;
-                }
                 CardFragment frag = CardFragment.create(title, text);
                 return frag;
             } else if (col == 1) {
@@ -130,8 +127,11 @@ public class MainActivity extends WearableActivity {
 
         @Override
         public Drawable getBackgroundForRow(int row) {
-            return mContext.getResources().getDrawable(
-                    (BG_IMAGES[row % BG_IMAGES.length]), null);
+            images = ((MyWearApplication) getApplication()).getRepImages();
+            Log.d("T", "getBackgroundForRow: " + Integer.toString(row));
+            Log.d("T", "images: " + Integer.toString(images.size()));
+            Log.d("T", "reps: " + Integer.toString(reps.size()));
+            return images.get((images.size() - reps.size()) + row);
         }
     }
 
@@ -139,24 +139,6 @@ public class MainActivity extends WearableActivity {
         Intent sendIntent = new Intent(context, WatchToPhoneService.class);
         sendIntent.putExtra("DATA", data);
         context.startService(sendIntent);
-    }
-
-    public static class RepCardFragment extends CardFragment {
-        @Override
-        public View onCreateContentView(LayoutInflater inflater, ViewGroup container,
-                                        Bundle savedInstanceState) {
-            final View view = inflater.inflate(R.layout.watch_card_content, container, false);
-            ((View) view.getParent()).setClickable(true);
-            view.setClickable(true);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    sendToPhone(((TextView) v.findViewById(R.id.title)).getText().toString(), view.getContext());
-                }
-            });
-            return view;
-        }
     }
 
     public static class OpenOnPhoneFragment extends Fragment {
@@ -191,13 +173,13 @@ public class MainActivity extends WearableActivity {
             // Inflate the layout for this fragment
             final View view = inflater.inflate(R.layout.vote_view, container, false);
             VoteView vote = reps.get(0).vote;
-            String district = vote.district + ", " + vote.state;
+            String district = vote.county + " County, " + vote.state;
             TextView district_name = (TextView) view.findViewById(R.id.district);
             TextView obama = (TextView) view.findViewById(R.id.obama_perc);
             TextView romney = (TextView) view.findViewById(R.id.romney_perc);
             district_name.setText(district);
-            obama.setText(vote.obama_percent);
-            romney.setText(vote.romney_percent);
+            obama.setText(vote.obama_percent + "%");
+            romney.setText(vote.romney_percent + "%");
             return view;
         }
     }

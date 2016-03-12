@@ -1,6 +1,7 @@
 package com.example.kylehotchkiss.represent;
 
 import android.app.Service;
+import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,28 +20,43 @@ public class repWatchData {
 class WatchRepresentative implements Serializable {
     String name;
     String party;
-    int photoId;
+    Boolean isRep;
     VoteView vote;
 
-    WatchRepresentative(String name, String party, int photoId, VoteView phoneVote) {
+    WatchRepresentative(String name, String party, Boolean isRep) {
         this.name = name;
+        if (party.equals("D")) {
+            party = "Democrat";
+        } else if (party.equals("R")) {
+            party = "Republican";
+        } else {
+            party = "Independent";
+        }
         this.party = party;
-        this.photoId = photoId;
-        this.vote = phoneVote;
+        this.vote = null;
+        this.isRep = isRep;
+    }
+
+    public void setVote(VoteView voteview) {
+        this.vote = voteview;
     }
 }
 
 class VoteView implements Serializable {
     String state;
-    String district;
+    String county;
     String obama_percent;
     String romney_percent;
 
     VoteView(String st, String dis, String obama, String romney) {
         state = st;
-        district = dis;
+        county = dis;
         obama_percent = obama;
         romney_percent = romney;
+    }
+
+    public String toString() {
+        return "2012 Vote View: County: " + this.county + ", State: " + this.state + ", Obama: " + this.obama_percent + " , Romney: " + this.romney_percent;
     }
 }
 

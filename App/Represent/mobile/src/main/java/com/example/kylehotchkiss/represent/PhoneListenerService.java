@@ -29,7 +29,7 @@ public class PhoneListenerService extends WearableListenerService {
             if (messageEvent.getPath().equalsIgnoreCase("/" + rep.name)) {
                 Intent intent = new Intent(this, DetailedActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("representative", rep);
+                intent.putExtra("representative", rep.name);
                 startActivity(intent);
             }
         }
